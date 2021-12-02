@@ -5,7 +5,6 @@ Rails.application.routes.draw do
       post :sign_out
     end
   end
-
   resources :welcome, only:[:index]
   root 'welcome#index'
 end

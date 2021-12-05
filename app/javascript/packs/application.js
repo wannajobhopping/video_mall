@@ -9,6 +9,9 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "stylesheets/application";
 
+import initVueApp from "@/main.js"
+
+initVueApp()
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

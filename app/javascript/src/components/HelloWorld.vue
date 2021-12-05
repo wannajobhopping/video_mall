@@ -4,17 +4,17 @@
   </p>
 </template>
 <script>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 export default {
   name: 'HelloWorld',
   setup() {
-      const message = ref('Hello World')
-      return {
-        message
-      }
-  }
-}
+    const message = ref('Hello World');
+    return {
+      message,
+    };
+  },
+};
 </script>
 
 <style scoped>

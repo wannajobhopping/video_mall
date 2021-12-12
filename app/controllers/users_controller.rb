@@ -14,6 +14,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def sign_in
+    email = params[:email]
+    encrypted_password = Digest::SHA1.hexdigest("qidftmw#{params[:password]}mdsfjiw")
+    if User.find_by(email: email, encrypted_password: encrypted_password)
+      user = User.find_by(email: email, encrypted_password: encrypted_password)
+      session[:video_mall] = user.id
+      respond_to do |format|
+        format.json { render json: { success: true, user_name: user.id} }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: { success: false, message: '查無此帳號'} }
+      end
+    end
+  end
+
   def edit; end
 
   def update; end

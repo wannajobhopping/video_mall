@@ -8,9 +8,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to(root_path, notice: '註冊成功')
+      respond_to do |format|
+        format.json { render json: { success: true, user_name: @user.id} }
+      end
     else
-      render :new
+      respond_to do |format|
+        format.json { render json: { success: false, error_messages: @user.error_messages} }
+      end
     end
   end
 
@@ -27,6 +31,13 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.json { render json: { success: false, message: '查無此帳號'} }
       end
+    end
+  end
+
+  def sign_out
+    session[:video_mall] = nil
+    respond_to do |format|
+      format.json { render json: { success: true, message: '已成功登出'} }
     end
   end
 

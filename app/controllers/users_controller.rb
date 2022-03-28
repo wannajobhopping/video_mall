@@ -49,6 +49,9 @@ class UsersController < ApplicationController
 
   def sign_out; end
 
+  # def test
+  # end
+
   private
   
   def user_params
